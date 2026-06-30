@@ -406,15 +406,104 @@
       box-shadow: 0 8px 28px rgba(34,211,238,0.35);
     }
 
+    /* ── MOBILE HEADER ───────────────────────── */
+    .mobile-header {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      z-index: 200;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .mobile-header-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .mobile-header-name span { color: var(--accent); }
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 56px; left: 0; right: 0; bottom: 0;
+      background: rgba(7,11,20,0.97);
+      z-index: 190;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .mobile-drawer.open { opacity: 1; pointer-events: all; }
+    .mobile-nav-item {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 12px 32px;
+      border-radius: 12px;
+      transition: all 0.2s;
+      width: 240px;
+      text-align: center;
+    }
+    .mobile-nav-item:hover, .mobile-nav-item:active { color: var(--accent); background: var(--surface-2); }
+    .mobile-contacts {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .mobile-contact-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mobile-contact-link:hover { color: var(--accent); }
+    .mobile-contact-link svg { width: 13px; height: 13px; }
+
     /* ── MOBILE ──────────────────────────────── */
     @media (max-width: 768px) {
       .sidebar { display: none; }
-      .main { margin-left: 0; max-width: 100%; padding: 36px 20px; }
+      .mobile-header { display: flex; }
+      .mobile-drawer { display: flex; }
+      .main { margin-left: 0; max-width: 100%; padding: 80px 20px 40px; }
       .hero-name { font-size: 36px; }
       .exp-top { flex-direction: column; gap: 8px; }
       .edu-card { flex-direction: column; align-items: flex-start; }
       .edu-right { text-align: left; }
       .projects-grid { grid-template-columns: 1fr; }
+      .print-btn { bottom: 20px; right: 16px; padding: 10px 16px; font-size: 12px; }
     }
 
     @media print {
@@ -430,6 +519,34 @@
   </style>
 </head>
 <body>
+
+<!-- MOBILE HEADER -->
+<header class="mobile-header">
+  <div class="mobile-header-name">João <span>Victor</span></div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="drawer">
+  <a class="mobile-nav-item" href="#sobre"       onclick="closeDrawer()">Sobre</a>
+  <a class="mobile-nav-item" href="#experiencia" onclick="closeDrawer()">Experiência</a>
+  <a class="mobile-nav-item" href="#projetos"    onclick="closeDrawer()">Projetos</a>
+  <a class="mobile-nav-item" href="#stack"       onclick="closeDrawer()">Stack Técnico</a>
+  <a class="mobile-nav-item" href="#formacao"    onclick="closeDrawer()">Formação</a>
+  <a class="mobile-nav-item" href="#cursos"      onclick="closeDrawer()">Cursos</a>
+  <div class="mobile-contacts">
+    <a class="mobile-contact-link" href="mailto:oliveirajoaovictor056@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      oliveirajoaovictor056@gmail.com
+    </a>
+    <a class="mobile-contact-link" href="https://github.com/Oliveirajoao30" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      github.com/Oliveirajoao30
+    </a>
+  </div>
+</div>
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
@@ -799,6 +916,27 @@
   }, { rootMargin: '-20% 0px -75% 0px' });
 
   sections.forEach(s => observer.observe(s));
+
+  // Mobile hamburger
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('drawer');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = drawer.classList.contains('open');
+    if (isOpen) {
+      closeDrawer();
+    } else {
+      drawer.classList.add('open');
+      hamburger.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 </script>
 </body>
 </html>
