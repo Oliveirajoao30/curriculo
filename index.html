@@ -479,18 +479,38 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      width: 100%;
+      padding: 20px 32px;
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+    .mobile-contacts-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      align-self: flex-start;
     }
     .mobile-contact-link {
-      font-size: 12px;
-      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      width: 100%;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
     }
-    .mobile-contact-link:hover { color: var(--accent); }
-    .mobile-contact-link svg { width: 13px; height: 13px; }
+    .mobile-contact-link:last-child { border-bottom: none; }
+    .mobile-contact-link:hover, .mobile-contact-link:active { color: var(--accent); }
+    .mobile-contact-link svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--accent); }
 
     /* ── MOBILE ──────────────────────────────── */
     @media (max-width: 768px) {
@@ -537,6 +557,11 @@
   <a class="mobile-nav-item" href="#formacao"    onclick="closeDrawer()">Formação</a>
   <a class="mobile-nav-item" href="#cursos"      onclick="closeDrawer()">Cursos</a>
   <div class="mobile-contacts">
+    <div class="mobile-contacts-label">Contato</div>
+    <a class="mobile-contact-link" href="tel:+5521982402691">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.24 2 2 0 012.08 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (21) 98240-2691
+    </a>
     <a class="mobile-contact-link" href="mailto:oliveirajoaovictor056@gmail.com">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       oliveirajoaovictor056@gmail.com
@@ -545,6 +570,10 @@
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       github.com/Oliveirajoao30
     </a>
+    <span class="mobile-contact-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Maricá, RJ
+    </span>
   </div>
 </div>
 
